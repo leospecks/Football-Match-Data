@@ -1,0 +1,302 @@
+---
+title: "TacticalView"
+subtitle: "The Matrix Confusers"
+---
+
+Data source: [SkillCorner Open Data](https://github.com/SkillCorner/opendata)
+
+### Free Available Games
+
+Paid API allows access to most major leagues.
+
+{{< include _data_overview.md >}}
+: {tbl-colwidths="[12,8,10,50,10,10]"}
+
+### Select a Match
+
+::: {#match-data style="display: none;"}
+
+{{< include _data_overview.md >}}
+
+:::
+
+```{=html}
+<style>
+.match-picker {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 0.75rem 1rem;
+  align-items: center;
+  width: 100%;
+  max-width: 36rem;
+}
+
+.match-picker label {
+  margin: 0;
+}
+
+.match-picker select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+</style>
+
+<div class="match-picker">
+  <label for="pick-league">League:</label>
+  <select id="pick-league"></select>
+
+  <label for="pick-season">Season:</label>
+  <select id="pick-season"></select>
+
+  <label for="pick-matchday">Matchday:</label>
+  <select id="pick-matchday"></select>
+
+  <label for="pick-match">Match:</label>
+  <select id="pick-match"></select>
+</div>
+
+<p id="selected-match"></p>
+
+<script type="module">
+const table = document.querySelector("#match-data table");
+
+const games = Array.from(table.tBodies)
+  .flatMap(body => Array.from(body.rows))
+  .map(row => {
+    const [league, season, matchday, game, date, id] =
+      Array.from(row.cells, cell => cell.textContent.trim());
+
+    return {league, season, matchday, game, date, id};
+  });
+
+const fields = ["league", "season", "matchday", "id"];
+const labels = ["League", "Season", "Matchday", "Match"];
+const dropdowns = [
+  "pick-league", "pick-season", "pick-matchday", "pick-match"
+].map(id => document.getElementById(id));
+
+const byId = new Map(games.map(game => [game.id, game]));
+
+function update(resetFrom = 0) {
+  let available = games;
+
+  dropdowns.forEach((dropdown, index) => {
+    const field = fields[index];
+
+    if (index >= resetFrom) {
+      const values = [...new Set(available.map(game => game[field]))]
+        .sort((a, b) => a.localeCompare(b, undefined, {numeric: true}));
+
+    dropdown.replaceChildren(
+    ...values.map(value => new Option(
+        field === "id"
+        ? `${byId.get(value).game} (${byId.get(value).date})`
+        : value,
+        value
+    ))
+    );
+
+    dropdown.disabled = values.length === 0;
+    dropdown.selectedIndex = values.length ? 0 : -1;
+    }
+
+    available = available.filter(game => game[field] === dropdown.value);
+  });
+
+  const matchId = dropdowns[3].value;
+
+  window.selectedMatchId = matchId || null;
+
+  window.dispatchEvent(new CustomEvent("match-selected", {
+  detail: {matchId: window.selectedMatchId}
+  }));
+}
+
+dropdowns.forEach((dropdown, index) => {
+  dropdown.addEventListener("change", () => update(index + 1));
+});
+
+update();
+</script>
+```
+
+
+
+### Match Overview
+```{=html}
+<style>
+.match-score {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.match-score > strong {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  white-space: nowrap;
+}
+
+.team-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.5rem;
+}
+
+.home .team-heading {
+  justify-content: flex-end;
+}
+
+.away .team-heading {
+  justify-content: flex-start;
+}
+
+.home { text-align: right; }
+.away { text-align: left; }
+
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.team-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border: 3px solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.goalscorers {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+</style>
+
+<div class="match-score">
+  <div class="home">
+    <div class="team-heading">
+      <span id="home-circle" class="team-circle" hidden aria-hidden="true"></span>
+      <span id="score-home" class="team-name"></span>
+    </div>
+    <div id="home-scorers" class="goalscorers"></div>
+  </div>
+
+  <strong id="score-result"></strong>
+
+  <div class="away">
+    <div class="team-heading">
+      <span id="score-away" class="team-name"></span>
+      <span id="away-circle" class="team-circle" hidden aria-hidden="true"></span>
+    </div>
+    <div id="away-scorers" class="goalscorers"></div>
+  </div>
+</div>
+
+<p id="score-message" role="status"></p>
+
+<script type="module">
+const home = document.getElementById("score-home");
+const away = document.getElementById("score-away");
+const score = document.getElementById("score-result");
+const message = document.getElementById("score-message");
+
+const homeCircle = document.getElementById("home-circle");
+const awayCircle = document.getElementById("away-circle");
+const homeScorers = document.getElementById("home-scorers");
+const awayScorers = document.getElementById("away-scorers");
+
+let requestNumber = 0;
+
+function setTeamColor(circle, kit) {
+  circle.style.backgroundColor = kit?.jersey_color || "#aaaaaa";
+  circle.style.borderColor = kit?.number_color || "#222222";
+  circle.hidden = false;
+}
+
+function showGoalscorers(container, players, teamId) {
+  container.replaceChildren();
+
+  for (const player of players) {
+    const ownTeam = String(player.team_id) === String(teamId);
+
+    // Own goals are listed under the team that benefits.
+    const goals = Number(ownTeam ? player.goal : player.own_goal) || 0;
+    if (goals <= 0) continue;
+
+    const name = (
+      player.short_name ||
+      `${player.first_name || ""} ${player.last_name || ""}`
+    ).replace(/\s+/g, " ").trim();
+
+    const line = document.createElement("div");
+    line.textContent =
+      name +
+      (goals > 1 ? ` ×${goals}` : "") +
+      (!ownTeam ? " (own goal)" : "");
+
+    container.appendChild(line);
+  }
+}
+
+async function showScore() {
+  const currentRequest = ++requestNumber;
+  const matchId = window.selectedMatchId;
+
+  home.textContent = score.textContent = away.textContent = "";
+  homeCircle.hidden = awayCircle.hidden = true;
+  homeScorers.replaceChildren();
+  awayScorers.replaceChildren();
+
+  if (!matchId) {
+    message.textContent = "Select a game above.";
+    return;
+  }
+
+  message.textContent = "Loading…";
+
+  try {
+    const id = encodeURIComponent(matchId);
+    const response = await fetch(`data/${id}/${id}_match.json`);
+
+    if (!response.ok) throw new Error("Match file unavailable.");
+
+    const match = await response.json();
+    if (currentRequest !== requestNumber) return;
+
+    home.textContent = match.home_team.name;
+    away.textContent = match.away_team.name;
+    score.textContent =
+      `${match.home_team_score ?? "—"} : ${match.away_team_score ?? "—"}`;
+
+    setTeamColor(homeCircle, match.home_team_kit);
+    setTeamColor(awayCircle, match.away_team_kit);
+
+    showGoalscorers(homeScorers, match.players || [], match.home_team.id);
+    showGoalscorers(awayScorers, match.players || [], match.away_team.id);
+
+    message.textContent = "";
+  } catch (error) {
+    if (currentRequest === requestNumber) {
+      message.textContent = "Could not load the selected match.";
+    }
+  }
+}
+
+window.addEventListener("match-selected", showScore);
+showScore();
+</script>
+```
+### Player Heatmap
+
+

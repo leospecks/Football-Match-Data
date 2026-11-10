@@ -1,0 +1,17 @@
+project:
+  type: website
+  render:
+    - index.qmd
+  resources:
+    - "data/**/*_match.json"
+
+website:
+  title: "Football Analysis"
+
+format:
+  html:
+    theme: cosmo
+    toc: false
+    page-layout: full
+
+
