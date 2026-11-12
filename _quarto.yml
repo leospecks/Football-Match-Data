@@ -4,6 +4,7 @@ project:
     - index.qmd
   resources:
     - "data/**/*_match.json"
+    - "momentum.csv"
 
 website:
   title: "Football Analysis"
