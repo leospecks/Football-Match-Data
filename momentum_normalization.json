@@ -1,0 +1,60 @@
+{
+  "version": "composite-momentum-v2",
+  "settings": {
+    "bin_seconds": 10,
+    "window_seconds": 180,
+    "half_life_seconds": 60,
+    "minimum_coverage": 0.8,
+    "max_tracking_gap": 0.5,
+    "detected_only": false,
+    "entry_hysteresis_metres": 1.0,
+    "control_distance_metres": 3.0,
+    "max_control_height_metres": 2.0
+  },
+  "scales": {
+    "territory": 0.1649959763598193,
+    "box": 0.057513788258438996,
+    "entries": 1.393837084092258,
+    "shots": 0.7073124823402296,
+    "recoveries": 1.0462772225935226,
+    "epv": 0.029374254042351874
+  },
+  "methods": {
+    "territory": "pooled_95th_percentile",
+    "box": "pooled_95th_percentile",
+    "entries": "pooled_95th_percentile",
+    "shots": "pooled_95th_percentile",
+    "recoveries": "pooled_95th_percentile",
+    "epv": "pooled_95th_percentile"
+  },
+  "sample_counts": {
+    "territory": 23326,
+    "box": 23326,
+    "entries": 23326,
+    "shots": 23680,
+    "recoveries": 23320,
+    "epv": 23658
+  },
+  "calibration_match_ids": [
+    "1874553",
+    "1886347",
+    "1899585",
+    "1925299",
+    "1927964",
+    "1953632",
+    "1959846",
+    "1986691",
+    "1996435",
+    "1996436",
+    "2006229",
+    "2006363",
+    "2007448",
+    "2007721",
+    "2010085",
+    "2011166",
+    "2013725",
+    "2015213",
+    "2016236",
+    "2017461"
+  ]
+}

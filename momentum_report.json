@@ -1,0 +1,791 @@
+{
+  "version": "composite-momentum-v2",
+  "settings": {
+    "bin_seconds": 10,
+    "window_seconds": 180,
+    "half_life_seconds": 60,
+    "minimum_coverage": 0.8,
+    "max_tracking_gap": 0.5,
+    "detected_only": false,
+    "entry_hysteresis_metres": 1.0,
+    "control_distance_metres": 3.0,
+    "max_control_height_metres": 2.0
+  },
+  "weights": {
+    "territory": 0.3,
+    "box": 0.2,
+    "entries": 0.15,
+    "shots": 0.2,
+    "recoveries": 0.05,
+    "epv": 0.1
+  },
+  "minimum_active_base_weight": 0.5,
+  "normalization": {
+    "version": "composite-momentum-v2",
+    "settings": {
+      "bin_seconds": 10,
+      "window_seconds": 180,
+      "half_life_seconds": 60,
+      "minimum_coverage": 0.8,
+      "max_tracking_gap": 0.5,
+      "detected_only": false,
+      "entry_hysteresis_metres": 1.0,
+      "control_distance_metres": 3.0,
+      "max_control_height_metres": 2.0
+    },
+    "scales": {
+      "territory": 0.1649959763598193,
+      "box": 0.057513788258438996,
+      "entries": 1.393837084092258,
+      "shots": 0.7073124823402296,
+      "recoveries": 1.0462772225935226,
+      "epv": 0.029374254042351874
+    },
+    "methods": {
+      "territory": "pooled_95th_percentile",
+      "box": "pooled_95th_percentile",
+      "entries": "pooled_95th_percentile",
+      "shots": "pooled_95th_percentile",
+      "recoveries": "pooled_95th_percentile",
+      "epv": "pooled_95th_percentile"
+    },
+    "sample_counts": {
+      "territory": 23326,
+      "box": 23326,
+      "entries": 23326,
+      "shots": 23680,
+      "recoveries": 23320,
+      "epv": 23658
+    },
+    "calibration_match_ids": [
+      "1874553",
+      "1886347",
+      "1899585",
+      "1925299",
+      "1927964",
+      "1953632",
+      "1959846",
+      "1986691",
+      "1996435",
+      "1996436",
+      "2006229",
+      "2006363",
+      "2007448",
+      "2007721",
+      "2010085",
+      "2011166",
+      "2013725",
+      "2015213",
+      "2016236",
+      "2017461"
+    ]
+  },
+  "skipped_matches": [],
+  "ignored_duplicate_metadata": [
+    "C:\\Users\\Leo\\PycharmProjects\\Football Match Data\\data\\1886347_match.json"
+  ],
+  "games": {
+    "1874553": {
+      "home": "Brisbane Roar FC",
+      "away": "Adelaide United Football Club",
+      "bins": 604,
+      "bins_with_momentum": 598,
+      "feature_active_bins": {
+        "territory": 598,
+        "box": 598,
+        "entries": 598,
+        "shots": 604,
+        "epv": 603,
+        "recoveries": 591
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 959,
+        "missing_epv_snapshots": 56,
+        "valid_epv_snapshots": 1862,
+        "tracking_frames": 60282,
+        "controlled_entries": 94,
+        "estimated_ball_frames_used": 1339,
+        "unusable_ball_or_possession_frames": 831
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1886347": {
+      "home": "Auckland FC",
+      "away": "Newcastle United Jets FC",
+      "bins": 591,
+      "bins_with_momentum": 579,
+      "feature_active_bins": {
+        "territory": 579,
+        "box": 579,
+        "entries": 579,
+        "shots": 591,
+        "epv": 590,
+        "recoveries": 583
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 990,
+        "missing_epv_snapshots": 35,
+        "valid_epv_snapshots": 1945,
+        "tracking_frames": 59042,
+        "controlled_entries": 77,
+        "estimated_ball_frames_used": 1379,
+        "unusable_ball_or_possession_frames": 909
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1899585": {
+      "home": "Auckland FC",
+      "away": "Wellington Phoenix FC",
+      "bins": 606,
+      "bins_with_momentum": 598,
+      "feature_active_bins": {
+        "territory": 598,
+        "box": 598,
+        "entries": 598,
+        "shots": 606,
+        "epv": 605,
+        "recoveries": 598
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 898,
+        "missing_epv_snapshots": 53,
+        "valid_epv_snapshots": 1743,
+        "tracking_frames": 60511,
+        "estimated_ball_frames_used": 2086,
+        "controlled_entries": 83,
+        "unusable_ball_or_possession_frames": 1089
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1925299": {
+      "home": "Brisbane Roar FC",
+      "away": "Perth Glory Football Club",
+      "bins": 614,
+      "bins_with_momentum": 599,
+      "feature_active_bins": {
+        "territory": 599,
+        "box": 599,
+        "entries": 599,
+        "shots": 614,
+        "epv": 613,
+        "recoveries": 606
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 1054,
+        "missing_epv_snapshots": 88,
+        "valid_epv_snapshots": 2020,
+        "tracking_frames": 61282,
+        "estimated_ball_frames_used": 1850,
+        "controlled_entries": 93,
+        "unusable_ball_or_possession_frames": 1056
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1927964": {
+      "home": "Western Sydney Wanderers FC",
+      "away": "Wellington Phoenix FC",
+      "bins": 591,
+      "bins_with_momentum": 579,
+      "feature_active_bins": {
+        "territory": 579,
+        "box": 579,
+        "entries": 579,
+        "shots": 591,
+        "epv": 590,
+        "recoveries": 583
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 1140,
+        "missing_epv_snapshots": 50,
+        "valid_epv_snapshots": 2230,
+        "tracking_frames": 59051,
+        "estimated_ball_frames_used": 1746,
+        "unusable_ball_or_possession_frames": 836,
+        "controlled_entries": 87
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1953632": {
+      "home": "Central Coast Mariners Football Club",
+      "away": "Melbourne City FC",
+      "bins": 593,
+      "bins_with_momentum": 584,
+      "feature_active_bins": {
+        "territory": 584,
+        "box": 584,
+        "entries": 584,
+        "shots": 593,
+        "epv": 593,
+        "recoveries": 580
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 979,
+        "missing_epv_snapshots": 48,
+        "valid_epv_snapshots": 1910,
+        "tracking_frames": 59231,
+        "estimated_ball_frames_used": 2018,
+        "controlled_entries": 55,
+        "unusable_ball_or_possession_frames": 874
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1959846": {
+      "home": "Melbourne Victory Football Club",
+      "away": "Western United",
+      "bins": 586,
+      "bins_with_momentum": 586,
+      "feature_active_bins": {
+        "territory": 586,
+        "box": 586,
+        "entries": 586,
+        "shots": 586,
+        "epv": 584,
+        "recoveries": 577
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 946,
+        "missing_epv_snapshots": 109,
+        "valid_epv_snapshots": 1783,
+        "estimated_ball_frames_used": 1146,
+        "tracking_frames": 58532,
+        "unusable_ball_or_possession_frames": 409,
+        "controlled_entries": 80
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1986691": {
+      "home": "Western Sydney Wanderers FC",
+      "away": "Auckland FC",
+      "bins": 592,
+      "bins_with_momentum": 570,
+      "feature_active_bins": {
+        "territory": 570,
+        "box": 570,
+        "entries": 570,
+        "shots": 592,
+        "epv": 591,
+        "recoveries": 583
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 915,
+        "missing_epv_snapshots": 52,
+        "valid_epv_snapshots": 1778,
+        "tracking_frames": 59071,
+        "estimated_ball_frames_used": 1938,
+        "unusable_ball_or_possession_frames": 1511,
+        "controlled_entries": 89
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1996435": {
+      "home": "Sydney Football Club",
+      "away": "Adelaide United Football Club",
+      "bins": 577,
+      "bins_with_momentum": 566,
+      "feature_active_bins": {
+        "territory": 566,
+        "box": 566,
+        "entries": 566,
+        "shots": 577,
+        "epv": 576,
+        "recoveries": 568
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 1005,
+        "missing_epv_snapshots": 60,
+        "valid_epv_snapshots": 1950,
+        "tracking_frames": 57602,
+        "estimated_ball_frames_used": 2037,
+        "controlled_entries": 89,
+        "unusable_ball_or_possession_frames": 669
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "1996436": {
+      "home": "Auckland FC",
+      "away": "Macarthur FC",
+      "bins": 604,
+      "bins_with_momentum": 604,
+      "feature_active_bins": {
+        "territory": 604,
+        "box": 604,
+        "entries": 604,
+        "shots": 604,
+        "epv": 603,
+        "recoveries": 595
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 786,
+        "missing_epv_snapshots": 65,
+        "valid_epv_snapshots": 1507,
+        "tracking_frames": 60261,
+        "controlled_entries": 73,
+        "unusable_ball_or_possession_frames": 441,
+        "estimated_ball_frames_used": 1365
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2006229": {
+      "home": "Melbourne City FC",
+      "away": "Macarthur FC",
+      "bins": 593,
+      "bins_with_momentum": 582,
+      "feature_active_bins": {
+        "territory": 582,
+        "box": 582,
+        "entries": 582,
+        "shots": 593,
+        "epv": 592,
+        "recoveries": 585
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 979,
+        "missing_epv_snapshots": 53,
+        "valid_epv_snapshots": 1905,
+        "tracking_frames": 59251,
+        "estimated_ball_frames_used": 1378,
+        "unusable_ball_or_possession_frames": 875,
+        "controlled_entries": 81
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2006363": {
+      "home": "Melbourne Victory Football Club",
+      "away": "Central Coast Mariners Football Club",
+      "bins": 592,
+      "bins_with_momentum": 588,
+      "feature_active_bins": {
+        "territory": 588,
+        "box": 588,
+        "entries": 588,
+        "shots": 589,
+        "epv": 592,
+        "recoveries": 584
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 976,
+        "missing_epv_snapshots": 59,
+        "valid_epv_snapshots": 1893,
+        "tracking_frames": 59072,
+        "controlled_entries": 104,
+        "estimated_ball_frames_used": 1458,
+        "unusable_ball_or_possession_frames": 591
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2007448": {
+      "home": "Perth Glory Football Club",
+      "away": "Brisbane Roar FC",
+      "bins": 582,
+      "bins_with_momentum": 560,
+      "feature_active_bins": {
+        "territory": 560,
+        "box": 560,
+        "entries": 560,
+        "shots": 582,
+        "epv": 578,
+        "recoveries": 574
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 863,
+        "missing_epv_snapshots": 88,
+        "valid_epv_snapshots": 1638,
+        "estimated_ball_frames_used": 1405,
+        "tracking_frames": 58062,
+        "controlled_entries": 83,
+        "unusable_ball_or_possession_frames": 797
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2007721": {
+      "home": "Auckland FC",
+      "away": "Central Coast Mariners Football Club",
+      "bins": 577,
+      "bins_with_momentum": 573,
+      "feature_active_bins": {
+        "territory": 573,
+        "box": 573,
+        "entries": 573,
+        "shots": 577,
+        "epv": 576,
+        "recoveries": 566
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 959,
+        "missing_epv_snapshots": 68,
+        "valid_epv_snapshots": 1850,
+        "tracking_frames": 57542,
+        "controlled_entries": 97,
+        "estimated_ball_frames_used": 1730,
+        "unusable_ball_or_possession_frames": 444
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2010085": {
+      "home": "Melbourne City FC",
+      "away": "Central Coast Mariners Football Club",
+      "bins": 591,
+      "bins_with_momentum": 587,
+      "feature_active_bins": {
+        "territory": 587,
+        "box": 587,
+        "entries": 587,
+        "shots": 591,
+        "epv": 590,
+        "recoveries": 582
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 935,
+        "missing_epv_snapshots": 51,
+        "valid_epv_snapshots": 1819,
+        "tracking_frames": 58972,
+        "estimated_ball_frames_used": 1432,
+        "unusable_ball_or_possession_frames": 554,
+        "controlled_entries": 92
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2011166": {
+      "home": "Wellington Phoenix FC",
+      "away": "Melbourne Victory Football Club",
+      "bins": 594,
+      "bins_with_momentum": 586,
+      "feature_active_bins": {
+        "territory": 586,
+        "box": 586,
+        "entries": 586,
+        "shots": 594,
+        "epv": 594,
+        "recoveries": 585
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 757,
+        "missing_epv_snapshots": 53,
+        "valid_epv_snapshots": 1461,
+        "tracking_frames": 59292,
+        "controlled_entries": 75,
+        "unusable_ball_or_possession_frames": 739,
+        "estimated_ball_frames_used": 924
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2013725": {
+      "home": "Western United",
+      "away": "Sydney Football Club",
+      "bins": 569,
+      "bins_with_momentum": 562,
+      "feature_active_bins": {
+        "territory": 562,
+        "box": 562,
+        "entries": 562,
+        "shots": 569,
+        "epv": 569,
+        "recoveries": 558
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 922,
+        "missing_epv_snapshots": 81,
+        "valid_epv_snapshots": 1763,
+        "tracking_frames": 56792,
+        "estimated_ball_frames_used": 1553,
+        "controlled_entries": 71,
+        "unusable_ball_or_possession_frames": 1100
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2015213": {
+      "home": "Western United",
+      "away": "Auckland FC",
+      "bins": 600,
+      "bins_with_momentum": 596,
+      "feature_active_bins": {
+        "territory": 596,
+        "box": 596,
+        "entries": 596,
+        "shots": 600,
+        "epv": 599,
+        "recoveries": 591
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 883,
+        "missing_epv_snapshots": 74,
+        "valid_epv_snapshots": 1692,
+        "tracking_frames": 59902,
+        "estimated_ball_frames_used": 1906,
+        "controlled_entries": 73,
+        "unusable_ball_or_possession_frames": 512
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2016236": {
+      "home": "Western United",
+      "away": "Adelaide United Football Club",
+      "bins": 601,
+      "bins_with_momentum": 596,
+      "feature_active_bins": {
+        "territory": 596,
+        "box": 596,
+        "entries": 596,
+        "shots": 601,
+        "epv": 600,
+        "recoveries": 593
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 959,
+        "missing_epv_snapshots": 119,
+        "valid_epv_snapshots": 1799,
+        "tracking_frames": 60042,
+        "unusable_ball_or_possession_frames": 739,
+        "controlled_entries": 82,
+        "estimated_ball_frames_used": 2170
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    },
+    "2017461": {
+      "home": "Melbourne Victory Football Club",
+      "away": "Auckland FC",
+      "bins": 586,
+      "bins_with_momentum": 570,
+      "feature_active_bins": {
+        "territory": 570,
+        "box": 570,
+        "entries": 570,
+        "shots": 586,
+        "epv": 584,
+        "recoveries": 578
+      },
+      "source_capabilities": {
+        "territory": true,
+        "box": true,
+        "entries": true,
+        "shots": true,
+        "recoveries": true,
+        "epv": true
+      },
+      "statistics": {
+        "possession_events": 805,
+        "missing_epv_snapshots": 55,
+        "valid_epv_snapshots": 1555,
+        "tracking_frames": 58452,
+        "controlled_entries": 93,
+        "estimated_ball_frames_used": 1210,
+        "unusable_ball_or_possession_frames": 1033
+      },
+      "notes": [
+        "In-play state from phase intervals.",
+        "Event counts assume complete possession events between each half's first and last event."
+      ]
+    }
+  },
+  "interpretation": "Positive favors home; negative favors away. Composite index points, not scoring probabilities.",
+  "caution": "Effective weights vary with data availability. Compare games with different active factors cautiously."
+}
